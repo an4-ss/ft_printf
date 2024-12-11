@@ -6,7 +6,7 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:11:33 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/12/06 17:13:30 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/12/09 20:25:38 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	ft_putstr(char *s)
 
 	count = 0;
 	if (!s)
-		return (count);
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	i = 0;
 	while (s[i] != '\0')
 	{

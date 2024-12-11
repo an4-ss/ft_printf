@@ -9,13 +9,14 @@ SRC = 	ft_printf.c \
 		ft_putptr.c \
 		ft_putstr.c \
 		ft_putunbr.c \
+		ft_putupperhexnbr.c \
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):$(OBJ)
-		ar -rc $@ $<
+		ar -rc $@ $^
 
 %.o:%.c ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@

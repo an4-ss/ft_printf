@@ -6,7 +6,7 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:16:36 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/12/06 17:13:41 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/12/10 12:00:09 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <stdarg.h>
 # include <unistd.h>
-# include <stdlib.h>
 
 int	ft_printf(const char *format, ...);
 int	ft_check(const char **format, va_list args);
 int	ft_putchar(char c);
-int	ft_puthexnbr(unsigned int n, const char *format);
+int	ft_puthexnbr(unsigned int n);
+int	ft_putupperhexnbr(unsigned int n);
 int	ft_putnbr(int n);
 int	ft_putpercent(void);
 int	ft_putptr(size_t ptr);

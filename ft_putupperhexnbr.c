@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putupperhexnbr.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 14:26:34 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/12/11 12:09:41 by arokhsi          ###   ########.fr       */
+/*   Created: 2024/12/10 11:52:04 by arokhsi           #+#    #+#             */
+/*   Updated: 2024/12/11 12:07:10 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_puthex(size_t n)
+static int	ft_check_and_count(unsigned int n)
 {
-	char	c;
-	char	*p;
-	int		count;
+	char		c;
+	const char	*p = "0123456789ABCDEF";
+	int			count;
 
-	p = "0123456789abcdef";
 	count = 0;
-	if (n >= 16)
-	{
-		count += ft_puthex (n / 16);
-		count += ft_puthex (n % 16);
-	}
-	else
-	{
-		c = p[n];
-		write (1, &c, 1);
-		count++;
-	}
+	c = p[n];
+	write(1, &c, 1);
+	count++;
 	return (count);
 }
 
-int	ft_putptr(size_t ptr)
+int	ft_putupperhexnbr(unsigned int n)
 {
 	int	count;
 
-	count = write(1, "0x", 2);
-	count += ft_puthex(ptr);
+	count = 0;
+	if (n > 15)
+	{
+		count += ft_putupperhexnbr(n / 16);
+		count += ft_putupperhexnbr(n % 16);
+	}
+	else
+	{
+		count += ft_check_and_count(n);
+	}
 	return (count);
 }
