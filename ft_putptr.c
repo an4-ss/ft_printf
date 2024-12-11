@@ -6,7 +6,7 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 14:26:34 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/12/11 12:09:41 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/12/11 16:23:18 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	ft_puthex(size_t n)
 {
-	char	c;
 	char	*p;
 	int		count;
 
@@ -26,19 +25,11 @@ static int	ft_puthex(size_t n)
 		count += ft_puthex (n % 16);
 	}
 	else
-	{
-		c = p[n];
-		write (1, &c, 1);
-		count++;
-	}
+		count += ft_putchar(p[n]);
 	return (count);
 }
 
 int	ft_putptr(size_t ptr)
 {
-	int	count;
-
-	count = write(1, "0x", 2);
-	count += ft_puthex(ptr);
-	return (count);
+	return (ft_putstr("0x") + ft_puthex(ptr));
 }
