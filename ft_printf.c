@@ -6,7 +6,7 @@
 /*   By: arokhsi <arokhsi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:32:00 by arokhsi           #+#    #+#             */
-/*   Updated: 2024/12/11 16:31:42 by arokhsi          ###   ########.fr       */
+/*   Updated: 2024/12/16 18:05:53 by arokhsi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ int	ft_printf(const char *format, ...)
 
 	count = 0;
 	va_start(args, format);
+	if (write (1, 0, 0) == -1)
+		return (-1);
 	while (*format)
 	{
-		if (*format == '%')
+		if (*format == '%' && *(format + 1) != '\0')
 			count += ft_check(++format, args);
-		else
+		else if (*format != '%')
 			count += ft_putchar(*format);
 		format++;
 	}
